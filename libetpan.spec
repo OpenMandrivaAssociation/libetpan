@@ -1,6 +1,6 @@
 %define name        libetpan
-%define version     0.49
-%define release     %mkrel 3
+%define version     0.52
+%define release     %mkrel 1
 %define lib_major        11
 %define lib_name    %mklibname etpan %lib_major
 %define Summary  LibEtPan is a mail purpose library
@@ -17,7 +17,7 @@ Source:           http://unc.dl.sourceforge.net/sourceforge/%{name}-%{version}.t
 Source1:          libetpan-0.31-libetpan.la.tar.bz2
 BuildRoot:       %{_tmppath}/%{name}-buildroot
 BuildRequires:  openssl-devel  
-BuildRequires:  db4.5-devel 
+BuildRequires:  db4.2-devel 
 Obsoletes: %name 
 Provides: %name 
 
@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
  
 %files -n %lib_name-devel
 %defattr(-,root,root) 
-%doc COPYRIGHT ChangeLog INSTALL NEWS TODO
+%doc COPYRIGHT ChangeLog NEWS 
 %doc doc/*
 %{_bindir}/libetpan-config
 %multiarch %{multiarch_bindir}/*
