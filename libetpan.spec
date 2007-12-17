@@ -15,7 +15,6 @@ License:          BSD
 URL:               http://libetpan.sourceforge.net/ 
 Source:           http://unc.dl.sourceforge.net/sourceforge/%{name}-%{version}.tar.bz2
 Source1:          libetpan-0.31-libetpan.la.tar.bz2
-BuildRoot:       %{_tmppath}/%{name}-buildroot
 BuildRequires:  openssl-devel  
 BuildRequires:  db4.2-devel 
 Obsoletes: %name 
