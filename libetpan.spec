@@ -1,24 +1,21 @@
-%define name        libetpan
-%define version     0.52
-%define release     %mkrel 1
-%define lib_major        11
-%define lib_name    %mklibname etpan %lib_major
-%define Summary  LibEtPan is a mail purpose library
- 
- 
-Summary:      %Summary
-Name:            %name
-Version:          %version
-Release:         %release
-Group:            System/Libraries
-License:          BSD
-URL:               http://libetpan.sourceforge.net/ 
-Source:           http://unc.dl.sourceforge.net/sourceforge/%{name}-%{version}.tar.bz2
-Source1:          libetpan-0.31-libetpan.la.tar.bz2
-BuildRequires:  openssl-devel  
-BuildRequires:  db4.2-devel 
-Obsoletes: %name 
-Provides: %name 
+%define major 11
+%define libname %mklibname etpan %major
+%define develname %mklibname etpan -d
+
+Summary:	LibEtPan is a mail purpose library
+Name:		libetpan
+Version:	0.52
+Release:	%mkrel 1
+Group:		System/Libraries
+License:	BSD
+URL:		http://libetpan.sourceforge.net/ 
+Source:		http://unc.dl.sourceforge.net/sourceforge/%{name}-%{version}.tar.bz2
+BuildRequires:	openssl-devel
+BuildRequires:	db4.6-devel
+BuildRequires:	libcurl-devel
+BuildRequires:	libexpat-devel
+Obsoletes:	%{name}
+Provides:	%{name}
 
 %description
 libEtPan is a mail purpose library.
@@ -28,64 +25,62 @@ Network protocols supported:
 o IMAP/NNTP/POP3/SMTP over TCP/IP and SSL/TCP/IP, already implemented.
 o Local storage (mbox/MH/maildir), message / MIME parser
 
-%package -n %lib_name
-Summary:%Summary
-Group: System/Libraries 
+%package -n %{libname}
+Summary:	LibEtPan is a mail purpose library
+Group:		System/Libraries 
 
-%description -n %lib_name
+%description -n %{libname}
 %Summary
 
-%package -n %lib_name-devel
-Summary: Libraries and include files for %name
-Group:    Development/C
-Requires: %lib_name = %{version}
-Provides: %name-devel  = %version
-Conflicts: %name-devel < %version
+%package -n %{develname}
+Summary:	Libraries and include files for %{name}
+Group:		Development/C
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel  = %{version}-%{release}
+Obsoletes:	%mklibname etpan 11 -d
+Provides:	%mklibname etpan 11 -d
 
-%description -n %lib_name-devel
+%description -n %{develname}
 This package contains the header files and static libraries for
-developing with %name.
+developing with %{name}.
 
 %prep
-%setup -qn %{name}-%{version}
+%setup -q
 
 %build
-%configure2_5x --enable-openssl
+%configure2_5x \
+	--enable-openssl
 
-# 0.42: parallel build broken on x86_64
-make
+%make
 
 %install
- rm -rf $RPM_BUILD_ROOT  
-%makeinstall
+rm -rf %{buildroot}
+%makeinstall_std
 
 #workaround for *.h detections 
 rm -f include/libetpan/libetpan-conf
-install -m 644 include/libetpan/*.h %buildroot/%_includedir/libetpan 
- 
-%multiarch_binaries $RPM_BUILD_ROOT%{_bindir}/libetpan-config 
+install -m 644 include/libetpan/*.h %{buildroot}%{_includedir}/libetpan 
 
-%post -n %lib_name -p /sbin/ldconfig 
+%multiarch_binaries %{buildroot}%{_bindir}/libetpan-config 
 
-%postun -n %lib_name -p /sbin/ldconfig 
+%post -n %{libname} -p /sbin/ldconfig 
+
+%postun -n %{libname} -p /sbin/ldconfig 
 
 %clean
-rm -rf $RPM_BUILD_ROOT  
+rm -rf %{buidroot}
+
+%files -n %{libname}
+%defattr(-,root,root)
+%{_libdir}/lib*.so.%{major}*
  
-%files -n %lib_name
-%defattr(-, root, root) 
-%_libdir/lib*.so.%{lib_major}*
- 
-%files -n %lib_name-devel
+%files -n %{develname}
 %defattr(-,root,root) 
 %doc COPYRIGHT ChangeLog NEWS 
 %doc doc/*
 %{_bindir}/libetpan-config
 %multiarch %{multiarch_bindir}/*
-%_includedir/*
-%_libdir/lib*.so
-%_libdir/*.a
-%_libdir/*.la 
-
-
-
+%{_includedir}/*
+%{_libdir}/lib*.so
+%{_libdir}/*.a
+%{_libdir}/*.la 
