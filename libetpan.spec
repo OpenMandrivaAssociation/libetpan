@@ -7,6 +7,7 @@ Name:		libetpan
 Version:	0.52
 Release:	%mkrel 2
 Group:		System/Libraries
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
 Source:		http://unc.dl.sourceforge.net/sourceforge/%{name}-%{version}.tar.bz2
