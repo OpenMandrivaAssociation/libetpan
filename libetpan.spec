@@ -2,7 +2,7 @@
 %define libname %mklibname etpan %major
 %define develname %mklibname etpan -d
 
-Summary:	LibEtPan is a mail purpose library
+Summary:	Mail purpose library
 Name:		libetpan
 Version:	0.52
 Release:	%mkrel 2
@@ -27,7 +27,7 @@ o IMAP/NNTP/POP3/SMTP over TCP/IP and SSL/TCP/IP, already implemented.
 o Local storage (mbox/MH/maildir), message / MIME parser
 
 %package -n %{libname}
-Summary:	LibEtPan is a mail purpose library
+Summary:	Mail purpose library
 Group:		System/Libraries 
 
 %description -n %{libname}
