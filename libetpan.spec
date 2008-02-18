@@ -4,19 +4,20 @@
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	0.52
-Release:	%mkrel 2
+Version:	0.53
+Release:	%mkrel 1
 Group:		System/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
-Source:		http://unc.dl.sourceforge.net/sourceforge/%{name}-%{version}.tar.bz2
+Source:		http://unc.dl.sourceforge.net/sourceforge/%{name}-%{version}.tar.gz
 BuildRequires:	openssl-devel
 BuildRequires:	db4.6-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libexpat-devel
 Obsoletes:	%{name}
 Provides:	%{name}
+Patch0:         libetpan-0.53-fix-append-bug.patch
 
 %description
 libEtPan is a mail purpose library.
@@ -47,6 +48,7 @@ developing with %{name}.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %configure2_5x \
