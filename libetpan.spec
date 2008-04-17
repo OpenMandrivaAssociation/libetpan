@@ -5,7 +5,7 @@
 Summary:	Mail purpose library
 Name:		libetpan
 Version:	0.54
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
@@ -29,6 +29,7 @@ o Local storage (mbox/MH/maildir), message / MIME parser
 %package -n %{libname}
 Summary:	Mail purpose library
 Group:		System/Libraries 
+Obsoletes:	%mklibname etpan 11 < 0.54
 
 %description -n %{libname}
 The purpose of this mail library is to provide a portable, efficient 
@@ -45,7 +46,7 @@ Summary:	Libraries and include files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel  = %{version}-%{release}
-Obsoletes:	%mklibname etpan 11 -d
+Obsoletes:	%mklibname etpan 11 -d < 0.54
 Provides:	%mklibname etpan 11 -d
 
 %description -n %{develname}
@@ -85,7 +86,7 @@ rm -rf %{buidroot}
  
 %files -n %{develname}
 %defattr(-,root,root) 
-%doc COPYRIGHT ChangeLog NEWS 
+%doc ChangeLog NEWS 
 %doc doc/*
 %{_bindir}/libetpan-config
 %multiarch %{multiarch_bindir}/*
