@@ -1,13 +1,12 @@
-%define major 11
-%define libname %mklibname etpan %major
+%define major 13
+%define libname %mklibname etpan %{major}
 %define develname %mklibname etpan -d
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	0.53
+Version:	0.54
 Release:	%mkrel 1
 Group:		System/Libraries
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
 Source:		http://unc.dl.sourceforge.net/sourceforge/%{name}-%{version}.tar.gz
@@ -15,13 +14,13 @@ BuildRequires:	openssl-devel
 BuildRequires:	db4.6-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libexpat-devel
-Obsoletes:	%{name}
-Provides:	%{name}
-Patch0:         libetpan-0.53-fix-append-bug.patch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
-libEtPan is a mail purpose library.
-It is used for low-level mail handling.
+The purpose of this mail library is to provide a portable, efficient 
+framework for different kinds of mail access. When using the drivers 
+interface, the interface is the same for all kinds of mail access, 
+remote and local mailboxes.
 
 Network protocols supported:
 o IMAP/NNTP/POP3/SMTP over TCP/IP and SSL/TCP/IP, already implemented.
@@ -32,7 +31,14 @@ Summary:	Mail purpose library
 Group:		System/Libraries 
 
 %description -n %{libname}
-%Summary
+The purpose of this mail library is to provide a portable, efficient 
+framework for different kinds of mail access. When using the drivers 
+interface, the interface is the same for all kinds of mail access, 
+remote and local mailboxes.
+
+Network protocols supported:
+o IMAP/NNTP/POP3/SMTP over TCP/IP and SSL/TCP/IP, already implemented.
+o Local storage (mbox/MH/maildir), message / MIME parser
 
 %package -n %{develname}
 Summary:	Libraries and include files for %{name}
@@ -48,11 +54,11 @@ developing with %{name}.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
 %configure2_5x \
-	--enable-openssl
+	--with-openssl \
+	--enable-ipv6
 
 %make
 
