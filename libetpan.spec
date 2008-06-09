@@ -73,9 +73,13 @@ install -m 644 include/libetpan/*.h %{buildroot}%{_includedir}/libetpan
 
 %multiarch_binaries %{buildroot}%{_bindir}/libetpan-config 
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig 
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig 
+%endif
 
 %clean
 rm -rf %{buidroot}
