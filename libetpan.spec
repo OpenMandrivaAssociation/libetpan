@@ -4,13 +4,13 @@
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	0.54
-Release:	%mkrel 3
+Version:	0.56
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
-Source:		http://unc.dl.sourceforge.net/sourceforge/%{name}-%{version}.tar.gz
-BuildRequires:	openssl-devel
+Source:		http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+BuildRequires:	gnutls-devel
 BuildRequires:	db4.6-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libexpat-devel
@@ -58,8 +58,10 @@ developing with %{name}.
 
 %build
 %configure2_5x \
-	--with-openssl \
-	--enable-ipv6
+	--without-openssl \
+	--with-gnutls \
+	--enable-ipv6 \
+	--enable-optim
 
 %make
 
