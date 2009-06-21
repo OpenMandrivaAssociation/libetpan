@@ -4,14 +4,14 @@
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	0.57
-Release:	%mkrel 2
+Version:	0.58
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
-Source:		http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source:		http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:	gnutls-devel
-BuildRequires:	db4.6-devel
+BuildRequires:	db4.7-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libexpat-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
