@@ -5,11 +5,12 @@
 Summary:	Mail purpose library
 Name:		libetpan
 Version:	0.58
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
 Source:		http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Patch0:		libetpan-0.58-drop-ldflags.patch
 BuildRequires:	gnutls-devel
 BuildRequires:	db4.8-devel
 BuildRequires:	libcurl-devel
@@ -55,6 +56,7 @@ developing with %{name}.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %configure2_5x \
