@@ -5,14 +5,15 @@
 Summary:	Mail purpose library
 Name:		libetpan
 Version:	0.58
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
 Source:		http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		libetpan-0.58-drop-ldflags.patch
+Patch1:		libetpan-0.58-db4.8.patch
 BuildRequires:	gnutls-devel
-BuildRequires:	db4.8-devel
+BuildRequires:	db4-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libexpat-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -57,8 +58,10 @@ developing with %{name}.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p0
 
 %build
+autoreconf -fi
 %configure2_5x \
 	--without-openssl \
 	--with-gnutls \
