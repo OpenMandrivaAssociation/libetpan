@@ -5,14 +5,14 @@
 Summary:	Mail purpose library
 Name:		libetpan
 Version:	1.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
 Source:		http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		libetpan-0.58-drop-ldflags.patch
 BuildRequires:	gnutls-devel
-BuildRequires:	db4-devel
+BuildRequires:	db-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libexpat-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -30,7 +30,7 @@ o Local storage (mbox/MH/maildir), message / MIME parser
 %package -n %{libname}
 Summary:	Mail purpose library
 Group:		System/Libraries 
-Obsoletes:	%mklibname etpan 13 < 1.0
+Obsoletes:	%{_lib}etpan13 < 1.0
 
 %description -n %{libname}
 The purpose of this mail library is to provide a portable, efficient 
@@ -47,8 +47,7 @@ Summary:	Libraries and include files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel  = %{version}-%{release}
-Obsoletes:	%mklibname etpan 11 -d < 0.54
-Provides:	%mklibname etpan 11 -d
+Obsoletes:	%{_lib}etpan11-devel < 0.54
 
 %description -n %{develname}
 This package contains the header files and static libraries for
