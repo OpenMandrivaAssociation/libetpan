@@ -1,11 +1,11 @@
-%define major 15
+%define major 16
 %define libname %mklibname etpan %{major}
 %define develname %mklibname etpan -d
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	1.0
-Release:	%mkrel 2
+Version:	1.1
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/ 
@@ -29,7 +29,7 @@ o Local storage (mbox/MH/maildir), message / MIME parser
 
 %package -n %{libname}
 Summary:	Mail purpose library
-Group:		System/Libraries 
+Group:		System/Libraries
 Obsoletes:	%{_lib}etpan13 < 1.0
 
 %description -n %{libname}
