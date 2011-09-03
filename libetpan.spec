@@ -74,11 +74,11 @@ make check
 rm -rf %{buildroot}
 %makeinstall_std
 
-#workaround for *.h detections 
-rm -f include/libetpan/libetpan-conf
-install -m 644 include/libetpan/*.h %{buildroot}%{_includedir}/libetpan 
+#workaround for *.h detections
+#rm -f include/libetpan/libetpan-conf
+#install -m 644 include/libetpan/*.h %{buildroot}%{_includedir}/libetpan
 
-%multiarch_binaries %{buildroot}%{_bindir}/libetpan-config 
+#%multiarch_binaries %{buildroot}%{_bindir}/libetpan-config
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig 
@@ -100,7 +100,7 @@ rm -rf %{buidroot}
 %doc ChangeLog NEWS 
 %doc doc/*
 %{_bindir}/libetpan-config
-%multiarch %{multiarch_bindir}/*
+#%multiarch %{multiarch_bindir}/*
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/*.a
