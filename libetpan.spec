@@ -103,4 +103,3 @@ rm -rf %{buidroot}
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/*.a
-%{_libdir}/*.la 
