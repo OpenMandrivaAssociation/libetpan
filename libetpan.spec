@@ -14,6 +14,8 @@ BuildRequires:	gnutls-devel
 BuildRequires:	db-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libexpat-devel
+BuildRequires:	libgpg-error-devel
+BuildRequires:	libgcrypt-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
