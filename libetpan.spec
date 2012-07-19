@@ -5,18 +5,17 @@
 Summary:	Mail purpose library
 Name:		libetpan
 Version:	1.1
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	BSD
-URL:		http://libetpan.sourceforge.net/ 
+URL:		http://libetpan.sourceforge.net/
 Source:		http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:	gnutls-devel
+BuildRequires:	pkgconfig(gnutls)
+BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	db-devel
-BuildRequires:	libcurl-devel
 BuildRequires:	libexpat-devel
 BuildRequires:	libgpg-error-devel
 BuildRequires:	libgcrypt-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The purpose of this mail library is to provide a portable, efficient 
@@ -48,7 +47,6 @@ Summary:	Libraries and include files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel  = %{version}-%{release}
-Obsoletes:	%{_lib}etpan11-devel < 0.54
 
 %description -n %{develname}
 This package contains the header files and static libraries for
@@ -79,27 +77,14 @@ rm -rf %{buildroot}
 
 #%multiarch_binaries %{buildroot}%{_bindir}/libetpan-config
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig 
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig 
-%endif
-
-%clean
-rm -rf %{buidroot}
-
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/lib*.so.%{major}*
- 
+
 %files -n %{develname}
-%defattr(-,root,root) 
-%doc ChangeLog NEWS 
+%doc ChangeLog NEWS
 %doc doc/*
 %{_bindir}/libetpan-config
-#%multiarch %{multiarch_bindir}/*
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/*.a
+#%multiarch %{multiarch_bindir}/*
