@@ -5,11 +5,11 @@
 Summary:	Mail purpose library
 Name:		libetpan
 Version:	1.1
-Release:	5
+Release:	6
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/
-Source:		http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	db-devel
@@ -68,7 +68,6 @@ developing with %{name}.
 make check
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 #workaround for *.h detections
