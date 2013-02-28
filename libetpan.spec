@@ -10,6 +10,7 @@ Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source1:	libetpan.rpmlintrc
 BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	db-devel
