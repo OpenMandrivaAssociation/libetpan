@@ -13,8 +13,8 @@ Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	db-devel
-BuildRequires:	libexpat-devel
-BuildRequires:	libgpg-error-devel
+BuildRequires:	pkgconfig(expat)
+BuildRequires:	pkgconfig(gpg-error)
 BuildRequires:	libgcrypt-devel
 
 %description
