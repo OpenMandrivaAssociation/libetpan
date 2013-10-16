@@ -5,7 +5,7 @@
 Summary:	Mail purpose library
 Name:		libetpan
 Version:	1.1
-Release:	6
+Release:	7
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/
