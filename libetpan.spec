@@ -86,6 +86,5 @@ make check
 %{_bindir}/libetpan-config
 %{_includedir}/*
 %{_libdir}/lib*.so
-%{_libdir}/*.a
 
 
