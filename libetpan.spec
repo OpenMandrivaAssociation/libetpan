@@ -1,11 +1,11 @@
-%define major 16
+%define major 17
 %define libname %mklibname etpan %{major}
 %define develname %mklibname etpan -d
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	1.1
-Release:	7
+Version:	1.5
+Release:	1
 Group:		System/Libraries
 License:	BSD
 URL:		http://libetpan.sourceforge.net/
@@ -57,6 +57,7 @@ developing with %{name}.
 %setup -q
 
 %build
+./autogen.sh
 %configure2_5x \
 	--without-openssl \
 	--with-gnutls \
