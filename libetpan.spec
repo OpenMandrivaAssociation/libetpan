@@ -4,7 +4,7 @@
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	1.6
+Version:	1.9.3
 Release:	1
 Group:		System/Libraries
 License:	BSD
