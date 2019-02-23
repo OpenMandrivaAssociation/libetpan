@@ -1,5 +1,2 @@
-removed_sources:
-  libetpan-1.1.tar.gz: 3476dc9142e0b78056446d2f143617708f8690b2
-  libetpan-1.5.tar.gz: 0a09f5d045c3531effbc2a3f765991cf067f5794
 sources:
-  libetpan-1.6.tar.gz: a5514139a8c5ee94d0337a89db8141cb3c557fa9
+  libetpan-1.9.3.tar.gz: c3084b5a3fb50aa2c1013c85e8fdb7d1e864146d
