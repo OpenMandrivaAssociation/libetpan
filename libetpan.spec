@@ -1,4 +1,4 @@
-%define major 20.4
+%define major 20
 %define libname %mklibname etpan %{major}
 %define develname %mklibname etpan -d
 
