@@ -1,4 +1,4 @@
-%define major 17
+%define major 20.4
 %define libname %mklibname etpan %{major}
 %define develname %mklibname etpan -d
 
@@ -65,13 +65,13 @@ developing with %{name}.
 	--enable-ipv6 \
 	--enable-optim
 
-%make
+%make_build
 
 %check
 make check
 
 %install
-%makeinstall_std
+%make_install
 
 #workaround for *.h detections
 #rm -f include/libetpan/libetpan-conf
