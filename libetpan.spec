@@ -17,6 +17,7 @@ BuildRequires:	db-devel
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(gpg-error)
 BuildRequires:	libgcrypt-devel
+BuildRequires:	pkgconfig(zlib)
 
 %description
 The purpose of this mail library is to provide a portable, efficient 
