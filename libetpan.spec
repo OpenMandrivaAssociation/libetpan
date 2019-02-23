@@ -1,10 +1,10 @@
-%define major 17
+%define major 20
 %define libname %mklibname etpan %{major}
 %define develname %mklibname etpan -d
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	1.6
+Version:	1.9.3
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -17,6 +17,7 @@ BuildRequires:	db-devel
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(gpg-error)
 BuildRequires:	libgcrypt-devel
+BuildRequires:	pkgconfig(zlib)
 
 %description
 The purpose of this mail library is to provide a portable, efficient 
@@ -64,13 +65,13 @@ developing with %{name}.
 	--enable-ipv6 \
 	--enable-optim
 
-%make
+%make_build
 
 %check
 make check
 
 %install
-%makeinstall_std
+%make_install
 
 #workaround for *.h detections
 #rm -f include/libetpan/libetpan-conf
