@@ -19,7 +19,7 @@ BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	db-devel
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(gpg-error)
-BuildRequires:	libgcrypt-devel
+BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(zlib)
 
 %description
@@ -62,7 +62,7 @@ developing with %{name}.
 ./autogen.sh
 
 %build
-%configure2_5x \
+%configure \
 	--without-openssl \
 	--with-gnutls \
 	--enable-ipv6 \
