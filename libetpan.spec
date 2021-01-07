@@ -1,16 +1,19 @@
+# Build system isn't compatible with the debuginfo generator
+%global debug_package %{nil}
 %define major 20
 %define libname %mklibname etpan %{major}
 %define develname %mklibname etpan -d
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	1.9.3
+Version:	1.9.4
 Release:	1
 Group:		System/Libraries
 License:	BSD
-URL:		http://libetpan.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+URL:		https://www.etpan.org/libetpan.html
+Source0:	https://github.com/dinhvh/libetpan/archive/%{version}.tar.gz
 Source1:	libetpan.rpmlintrc
+Patch0:		CVE-2020-15953.patch
 BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	db-devel
@@ -55,10 +58,10 @@ This package contains the header files and static libraries for
 developing with %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
+./autogen.sh
 
 %build
-./autogen.sh
 %configure2_5x \
 	--without-openssl \
 	--with-gnutls \
@@ -84,8 +87,6 @@ make check
 %files -n %{develname}
 %doc ChangeLog NEWS
 %doc doc/*
-%{_bindir}/libetpan-config
 %{_includedir}/*
 %{_libdir}/lib*.so
-
-
+%{_libdir}/pkgconfig/*.pc
