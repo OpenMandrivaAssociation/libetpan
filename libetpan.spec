@@ -1,7 +1,8 @@
 # Build system isn't compatible with the debuginfo generator
 %global debug_package %{nil}
 %define major 20
-%define libname %mklibname etpan %{major}
+%define libname %mklibname etpan
+%define oldlibname %mklibname etpan 20
 %define develname %mklibname etpan -d
 
 Summary:	Mail purpose library
@@ -37,6 +38,7 @@ o Local storage (mbox/MH/maildir), message / MIME parser
 %package -n %{libname}
 Summary:	Mail purpose library
 Group:		System/Libraries
+%rename	%{oldlibname}
 Obsoletes:	%{_lib}etpan13 < 1.0
 
 %description -n %{libname}
@@ -92,6 +94,7 @@ install -Dm0755 %SOURCE1 %{buildroot}%{_bindir}/%{name}-config
 %files -n %{develname}
 %doc ChangeLog NEWS
 %doc doc/*
+%{_bindir}/libetpan-config
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
