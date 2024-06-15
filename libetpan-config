@@ -1,0 +1,46 @@
+#!/bin/sh
+
+PKG_OPTIONS=
+
+usage="\
+Usage: libetpan-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--libs] [--cflags]"
+
+if test $# -eq 0; then
+      echo "${usage}" 1>&2
+      exit 1
+fi
+
+while test $# -gt 0; do
+  case "$1" in
+  -*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+  *) optarg= ;;
+  esac
+
+  case $1 in
+    --prefix=*)
+      PKG_OPTIONS="$PKG_OPTIONS${PKG_OPTIONS:+ }--define-variable=prefix=$optarg"
+      ;;
+    --prefix)
+      PKG_OPTIONS="$PKG_OPTIONS${PKG_OPTIONS:+ }--variable=prefix"
+      ;;
+    --exec-prefix=*)
+      PKG_OPTIONS="$PKG_OPTIONS${PKG_OPTIONS:+ }--define-variable=exec_prefix=$optarg"
+      ;;
+    --exec-prefix)
+      PKG_OPTIONS="$PKG_OPTIONS${PKG_OPTIONS:+ }--variable=exec_prefix"
+      ;;
+    --version)
+      PKG_OPTIONS="$PKG_OPTIONS${PKG_OPTIONS:+ }--modversion"
+      ;;
+    --cflags|--libs)
+      PKG_OPTIONS="$PKG_OPTIONS${PKG_OPTIONS:+ }$1"
+      ;;
+    *)
+      echo "${usage}" 1>&2
+      exit 1
+      ;;
+  esac
+  shift
+done
+
+exec pkg-config libetpan $PKG_OPTIONS
