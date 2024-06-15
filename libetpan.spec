@@ -7,13 +7,15 @@
 Summary:	Mail purpose library
 Name:		libetpan
 Version:	1.9.4
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 URL:		https://www.etpan.org/libetpan.html
 Source0:	https://github.com/dinhvh/libetpan/archive/%{version}.tar.gz
-Source1:	libetpan.rpmlintrc
+Source1: 	libetpan-config
+Source2:	libetpan.rpmlintrc
 Patch0:		CVE-2020-15953.patch
+
 BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	db-devel
@@ -79,6 +81,9 @@ make check
 #workaround for *.h detections
 #rm -f include/libetpan/libetpan-conf
 #install -m 644 include/libetpan/*.h %{buildroot}%{_includedir}/libetpan
+
+# Install libetpan-config (require by claws-mail) angry p
+install -Dm0755 %SOURCE1 %{buildroot}%{_bindir}/%{name}-config
 
 
 %files -n %{libname}
