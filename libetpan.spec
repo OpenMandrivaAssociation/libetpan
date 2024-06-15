@@ -1,19 +1,22 @@
 # Build system isn't compatible with the debuginfo generator
 %global debug_package %{nil}
 %define major 20
-%define libname %mklibname etpan %{major}
+%define libname %mklibname etpan
+%define oldlibname %mklibname etpan 20
 %define develname %mklibname etpan -d
 
 Summary:	Mail purpose library
 Name:		libetpan
 Version:	1.9.4
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 URL:		https://www.etpan.org/libetpan.html
 Source0:	https://github.com/dinhvh/libetpan/archive/%{version}.tar.gz
-Source1:	libetpan.rpmlintrc
+Source1: 	libetpan-config
+Source2:	libetpan.rpmlintrc
 Patch0:		CVE-2020-15953.patch
+
 BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	db-devel
@@ -35,6 +38,7 @@ o Local storage (mbox/MH/maildir), message / MIME parser
 %package -n %{libname}
 Summary:	Mail purpose library
 Group:		System/Libraries
+%rename	%{oldlibname}
 Obsoletes:	%{_lib}etpan13 < 1.0
 
 %description -n %{libname}
@@ -80,6 +84,9 @@ make check
 #rm -f include/libetpan/libetpan-conf
 #install -m 644 include/libetpan/*.h %{buildroot}%{_includedir}/libetpan
 
+# Install libetpan-config (require by claws-mail) angry p
+install -Dm0755 %SOURCE1 %{buildroot}%{_bindir}/%{name}-config
+
 
 %files -n %{libname}
 %{_libdir}/lib*.so.%{major}*
@@ -87,6 +94,7 @@ make check
 %files -n %{develname}
 %doc ChangeLog NEWS
 %doc doc/*
+%{_bindir}/libetpan-config
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
