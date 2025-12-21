@@ -17,6 +17,11 @@ Source1: 	libetpan-config
 Source2:	libetpan.rpmlintrc
 Patch0:		CVE-2020-15953.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	db-devel
