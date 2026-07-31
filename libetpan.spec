@@ -7,15 +7,15 @@
 
 Summary:	Mail purpose library
 Name:		libetpan
-Version:	1.9.4
-Release:	2
+Version:	1.10.1
+Release:	1
 Group:		System/Libraries
 License:	BSD
 URL:		https://www.etpan.org/libetpan.html
 Source0:	https://github.com/dinhvh/libetpan/archive/%{version}.tar.gz
 Source1: 	libetpan-config
 Source2:	libetpan.rpmlintrc
-Patch0:		CVE-2020-15953.patch
+# dropped (no longer applies): Patch0:		CVE-2020-15953.patch
 
 BuildRequires:	autoconf
 BuildRequires:	automake
